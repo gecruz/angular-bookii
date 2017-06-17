@@ -1,3 +1,3 @@
 import 'angular'
 import 'angular-ui-router'
-import './styles/main.styl'
+import './styles/main.scss'

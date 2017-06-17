@@ -1,9 +1,11 @@
-export default class ExampleDirective {
+import './shoppingCart.view.html'
+
+export default class ShoppingCart {
   constructor () {
-    this.templateUrl = 'directives/exampleDirective/example.view.html'
+    this.templateUrl = 'directives/shoppingCart/shoppingCart.view.html'
     this.restrict = 'E'
     this.scope = {}
-    this.controller = ExampleDirectiveController
+    this.controller = ShoppingCartController
     this.controllerAs = 'ctrl'
     this.bindToController = true
   }
@@ -11,14 +13,14 @@ export default class ExampleDirective {
   link (scope, elm, attrs, ngModelController) {}
 }
 
-class ExampleDirectiveController {
+class ShoppingCartController {
   constructor ($scope) {
     this._$scope = $scope
     this.setTitle()
   }
   setTitle () {
-    this._$scope.title = 'Example Directive'
+    this.title = 'Shopping Cart'
   }
 }
 
-ExampleDirectiveController.$inject = ['$scope']
+ShoppingCartController.$inject = ['$scope']
