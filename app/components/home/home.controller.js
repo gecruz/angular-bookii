@@ -1,15 +1,11 @@
-import './home.view.html';
-import '../../images/coringa.jpg';
+import './home.view.html'
+import '../../images/logo.png'
 
 class HomeController {
-    constructor($http, $scope) {
-        this._$http = $http;
-        this._$scope = $scope;
-    }
-
+  constructor () {
+    //
+  }
 
 }
 
-HomeController.$inject = ['$http', '$scope'];
-
-export { HomeController };
+export { HomeController }
