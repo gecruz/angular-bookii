@@ -1,4 +1,5 @@
 # bookii
+Book sales management
 
 ## Getting Started
 install dependencies: `npm install`  
