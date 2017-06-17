@@ -43,10 +43,10 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.styl$/,
+        test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader?sourceMap', 'stylus-loader?sourceMap'],
+          use: ['css-loader?sourceMap', 'sass-loader?sourceMap'],
           publicPath: '/dist'
         })
       },
