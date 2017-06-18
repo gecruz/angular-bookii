@@ -6,9 +6,13 @@
 
         <div layout-wrap flex-xs flex-gt-xs="100" layout="row" layout-align="center center">
 
-            <md-card flex-xs="90" flex-lg="25" ng-repeat="item in ctrl.books">
+            <md-card flex-xs="90" flex-lg="25" ng-repeat="item in ctrl.books | filter: q">
 
-                <span class="tags-label">{{ item.price | currency: "R$: " : fractionSize }}</span>
+                <div layout="row" layout-align="space-between center">
+                    <span class="tags-label left">{{ item.quantity }} items </span>
+                    <span flex=""></span>
+                    <span class="tags-label right">{{ item.price | currency: "R$: " : fractionSize }}</span>
+                </div>
 
                 <md-card-title>
                     <md-card-title-text>
@@ -35,8 +39,8 @@
                         <md-button ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite}" class="md-icon-button" aria-label="Favorite">
                             <md-icon>favorite</md-icon>
                         </md-button>
-                        <md-button ng-click="ctrl.toggle(item.id, ctrl.shoppingCartBooks)" ng-class="{'md-warn': ctrl.exists(item.id, ctrl.shoppingCartBooks) }" class="md-icon-button"
-                            aria-label="Shopping cart">
+                        <md-button ng-click="ctrl.toggle(item.id, ctrl.shoppingCartBooks)" ng-class="{'md-warn': ctrl.exists(item.id, ctrl.shoppingCartBooks) }"
+                            class="md-icon-button" aria-label="Shopping cart">
                             <md-icon>shopping_cart</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Share">
