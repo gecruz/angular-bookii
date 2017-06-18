@@ -1,4 +1,5 @@
 import { Router } from './router.js'
+import { ToolbarController } from './shared/toolbar/toolbar.controller.js'
 import { HomeController } from './components/home/home.controller.js'
 import { ShoppingCartController } from './components/shoppingCart/shoppingCart.controller.js'
 import { BooksService } from './services/books.service.js'
@@ -18,6 +19,7 @@ app.config(($mdThemingProvider) => {
 Router.configure(app)
 
 app
+  .controller('ToolbarController', ToolbarController)
   .controller('HomeController', HomeController)
   .controller('ShoppingCartController', ShoppingCartController)
   .service('BooksService', BooksService)

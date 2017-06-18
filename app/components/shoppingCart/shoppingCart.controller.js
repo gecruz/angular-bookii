@@ -1,5 +1,4 @@
 import './shoppingCart.view.html'
-import '../../images/logo.png'
 
 class ShoppingCartController {
   constructor (BooksService, $mdToast) {
@@ -9,6 +8,10 @@ class ShoppingCartController {
 
   init () {
     this.getAllBooks()
+  }
+
+  remove (index, list) {
+    list.splice(index, 1)
   }
 
   getAllBooks () {

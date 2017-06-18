@@ -14,13 +14,16 @@ export default class ShoppingCart {
 }
 
 class ShoppingCartController {
-  constructor ($scope) {
+  constructor ($scope, $state) {
     this._$scope = $scope
-    this.setTitle()
+    this._$state = $state
+  }
+  openCart () {
+    this._$state.go("app.shoppingCart")
   }
   setTitle () {
     this.title = 'Shopping Cart'
   }
 }
 
-ShoppingCartController.$inject = ['$scope']
+ShoppingCartController.$inject = ['$scope', '$state']
