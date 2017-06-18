@@ -6,9 +6,23 @@ class HomeController {
     this._BooksService = BooksService
     this._$mdToast = $mdToast
   }
+
   init () {
     this.getAllBooks()
+    this.getBookPreview()
   }
+
+  getBookPreview () {
+    this._BooksService
+      .getBookPreview()
+      .then(res => {
+        this.bookPreview = res.data
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
   getAllBooks () {
     this._BooksService
       .getAllBooks()

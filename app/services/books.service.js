@@ -13,6 +13,12 @@ class BooksService {
   //   return this._$http.get(`${this.API}/books`)
   // }
 
+  getBookPreview () {
+    return this._$q.resolve({
+      data: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur id quaerat illo non recusandae quo consectetur vitae tempora voluptatem qui laborum consequuntur corporis dolorem similique aperiam, totam? Et facere, eligendi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat delectus similique molestias quae voluptatibus ea maiores nemo hic dolor in porro quo dolorem dolore, earum, vel dolorum. Impedit, ipsam, quis.'
+    })
+  }
+
   getBookById (bookId) {
     return this._$q.when(
       this.getAllBooks().then(books => {
