@@ -3,7 +3,7 @@ import { ToolbarController } from './shared/toolbar/toolbar.controller.js'
 import { HomeController } from './components/home/home.controller.js'
 import { ShoppingCartController } from './components/shoppingCart/shoppingCart.controller.js'
 import { BooksService } from './services/books.service.js'
-import ShoppingCartDirective from './directives/shoppingCartDirective/shoppingCartDirective.directive.js'
+import { ShoppingCartDirective } from './directives/shoppingCartDirective/shoppingCartDirective.directive.js'
 
 const app = angular.module('App', [
   'ui.router',

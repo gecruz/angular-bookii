@@ -4,6 +4,8 @@ class ShoppingCartController {
   constructor (BooksService, $mdToast) {
     this._BooksService = BooksService
     this._$mdToast = $mdToast
+
+    this.shoppingCartBooks = []
   }
 
   init () {
@@ -13,6 +15,8 @@ class ShoppingCartController {
   remove (index, list) {
     list.splice(index, 1)
   }
+
+  getShoppingCartBooks () {}
 
   getAllBooks () {
     this._BooksService

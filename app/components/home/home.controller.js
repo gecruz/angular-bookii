@@ -5,6 +5,8 @@ class HomeController {
   constructor (BooksService, $mdToast) {
     this._BooksService = BooksService
     this._$mdToast = $mdToast
+    // mock
+    this.shoppingCartBooks = [1, 2]
   }
 
   init () {
@@ -29,7 +31,6 @@ class HomeController {
       .then(res => {
         if (res.data) {
           this.books = res.data
-          console.log(this.books)
         } else {
           this._$mdToast.show(this._$mdToast.simple().textContent('Something went wrong'))
         }
@@ -53,6 +54,23 @@ class HomeController {
       .catch(err => {
         console.error(err)
       })
+  }
+
+  remove (index, list) {
+    list.splice(index, 1)
+  }
+
+  exists (item, list) {
+    return list.includes(parseInt(item))
+  }
+
+  toggle (item, list) {
+    let idx = list.indexOf(parseInt(item))
+    if (idx > -1) {
+      list.splice(idx, 1)
+    } else {
+      list.push(parseInt(item))
+    }
   }
 
 }

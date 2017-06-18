@@ -1,5 +1,4 @@
-
-<shopping-cart></shopping-cart>
+<shopping-cart books="ctrl.shoppingCartBooks"> </shopping-cart>
 
 <md-content>
 
@@ -36,7 +35,8 @@
                         <md-button ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite}" class="md-icon-button" aria-label="Favorite">
                             <md-icon>favorite</md-icon>
                         </md-button>
-                        <md-button ng-click="item.cart = !item.cart" ng-class="{'md-warn': item.cart}" class="md-icon-button" aria-label="Shopping cart">
+                        <md-button ng-click="ctrl.toggle(item.id, ctrl.shoppingCartBooks)" ng-class="{'md-warn': ctrl.exists(item.id, ctrl.shoppingCartBooks) }" class="md-icon-button"
+                            aria-label="Shopping cart">
                             <md-icon>shopping_cart</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Share">
