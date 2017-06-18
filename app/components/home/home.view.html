@@ -6,58 +6,56 @@
     <h1>Bookii</h1>
 </md-toolbar>
 
-<div ng-init="ctrl.init()">
+<shopping-cart></shopping-cart>
 
+<md-content>
 
-    <div layout-wrap flex-xs flex-gt-xs="100" layout="row" layout-align="center center">
+    <div ng-init="ctrl.init()">
 
-        <md-card flex-xs="90" flex-lg="25" ng-repeat="item in ctrl.books" md-theme="{{ item.selected ? 'dark-orange' : 'default' }}"
-            md-theme-watch>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{ item.title }}</span>
-                    <span class="md-subhead"> {{ item.author }}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content layout="row" layout-align="space-between">
+        <div layout-wrap flex-xs flex-gt-xs="100" layout="row" layout-align="center center">
 
-                <div class="md-media-lg card-media">
+            <md-card flex-xs="90" flex-lg="25" ng-repeat="item in ctrl.books">
 
-                    <div>
-                        <p ng-show="ctrl.bookPreview.length > 130 && !showMore">{{ ctrl.bookPreview|limitTo:130 }}...
-                            <md-button class="md-primary" ng-click="showMore = !showMore"><strong>Show more</strong></button>
-                        </p>
-                        <p ng-show="showMore">{{ ctrl.bookPreview }}
-                            <md-button class="md-primary" ng-click="showMore = !showMore"><strong>Show less</strong></button>
-                        </p>
+                <span class="tags-label">{{ item.price | currency: "R$: " : fractionSize }}</span>
+
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{ item.title }}</span>
+                        <div class="md-subhead">
+                            <span>{{ item.author }}</span>
+                            <span flex=""></span>
+                        </div>
+                    </md-card-title-text>
+                </md-card-title>
+
+                <md-card-content layout="row" layout-align="space-between">
+
+                    <div class="md-media-lg card-media">
+                        <div ng-show="ctrl.bookPreview.length > 130 && !showMore">{{ ctrl.bookPreview|limitTo:130 }}...
+                            <md-button md-no-ink class="md-primary" ng-click="showMore = !showMore"><strong>Show more</strong></md-button>
+                        </div>
+                        <div ng-show="showMore">{{ ctrl.bookPreview }}
+                            <md-button class="md-primary" ng-click="showMore = !showMore"><strong>Show less</strong></md-button>
+                        </div>
                     </div>
 
-                </div>
+                    <md-card-actions layout="column">
+                        <md-button ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite}" class="md-icon-button" aria-label="Favorite">
+                            <md-icon>favorite</md-icon>
+                        </md-button>
+                        <md-button ng-click="item.cart = !item.cart" ng-class="{'md-warn': item.cart}" class="md-icon-button" aria-label="Shopping cart">
+                            <md-icon>shopping_cart</md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Share">
+                            <md-icon>share</md-icon>
+                        </md-button>
+                    </md-card-actions>
 
-                <md-card-actions layout="column">
-                    <md-button class="md-icon-button" aria-label="Favorite">
-                        <md-icon>favorite</md-icon>
-                    </md-button>
-                    <md-button class="md-icon-button" aria-label="Settings">
-                        <md-icon>shopping_cart</md-icon>
-                    </md-button>
-                    <md-button class="md-icon-button" aria-label="Share">
-                        <md-icon>share</md-icon>
-                    </md-button>
-                </md-card-actions>
-            </md-card-content>
-        </md-card>
+                </md-card-content>
+            </md-card>
+
+        </div>
 
     </div>
 
-    {{ctrl.books}}
-
-    <shopping-cart></shopping-cart>
-
-    <label>Name:</label>
-    <input type="text" ng-model="yourName" placeholder="Enter a name here">
-    <hr>
-    <h1> Name {{yourName}}!</h1>
-    <img src="/images/logo.png" style="width: 200px; height: 200px;" alt="Logotipo com um livro">
-
-</div>
+</md-content>

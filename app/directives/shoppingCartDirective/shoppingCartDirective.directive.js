@@ -1,8 +1,8 @@
-import './shoppingCart.view.html'
+import './shoppingCartDirective.view.html'
 
 export default class ShoppingCart {
   constructor () {
-    this.templateUrl = 'directives/shoppingCart/shoppingCart.view.html'
+    this.templateUrl = require('./shoppingCartDirective.view.html')
     this.restrict = 'E'
     this.scope = {}
     this.controller = ShoppingCartController
