@@ -24,10 +24,14 @@ class ShoppingCartController {
     this._PromocodesService
       .getPromocode(code)
       .then(res => {
-        if (res.quantity > 0) {
-          this.promocode = res
-          this.updateTotal()
-          this._$mdToast.show(this._$mdToast.simple().textContent('Promocode found! :)'))
+        if (res) {
+          if (res.quantity > 0) {
+            this.promocode = res
+            this.updateTotal()
+            this._$mdToast.show(this._$mdToast.simple().textContent('Promocode found! :)'))
+          } else {
+            this._$mdToast.show(this._$mdToast.simple().textContent('Promocode not found :('))
+          }
         } else {
           this._$mdToast.show(this._$mdToast.simple().textContent('Promocode not found :('))
         }
@@ -62,7 +66,7 @@ class ShoppingCartController {
 
       if (this.promocode) {
         let promotionalBooks = this.books.filter(book => book.author === this.promocode.author)
-        let discount = promotionalBooks.reduce((total, book) => total - (book.price * book.cartQuantity * 0.1), 0)
+        let discount = promotionalBooks.reduce((total, book) => total - (book.price * book.cartQuantity * this.promocode.percentage / 100), 0)
         this.total += discount
       }
     } else {

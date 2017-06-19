@@ -30,9 +30,9 @@ class PromocodesService {
         quantity: 0
       }, {
         id: 3,
-        title: '33333',
+        code: '33333',
         author: 'Aurelio Marinho Jargas	',
-        price: 20,
+        percentage: 20,
         quantity: 13
       }]
     })
