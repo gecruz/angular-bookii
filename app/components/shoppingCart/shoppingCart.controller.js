@@ -18,6 +18,7 @@ class ShoppingCartController {
   }
   remove (index, list) {
     list.splice(index, 1)
+    this.updateTotal()
   }
   validatePromocode (code) {
     this._PromocodesService
@@ -25,6 +26,7 @@ class ShoppingCartController {
       .then(res => {
         if (res.quantity > 0) {
           this.promocode = res
+          this.updateTotal()
           this._$mdToast.show(this._$mdToast.simple().textContent('Promocode found! :)'))
         } else {
           this._$mdToast.show(this._$mdToast.simple().textContent('Promocode not found :('))
@@ -57,6 +59,12 @@ class ShoppingCartController {
   updateTotal () {
     if (this.books) {
       this.total = this.books.reduce((total, book) => total + (book.price * book.cartQuantity), 0)
+
+      if (this.promocode) {
+        let promotionalBooks = this.books.filter(book => book.author === this.promocode.author)
+        let discount = promotionalBooks.reduce((total, book) => total - (book.price * book.cartQuantity * 0.1), 0)
+        this.total += discount
+      }
     } else {
       this.total = 0
     }
