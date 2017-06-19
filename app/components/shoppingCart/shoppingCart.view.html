@@ -1,6 +1,6 @@
 <md-content layout-wrap ng-init="ctrl.init()">
 
-    <md-list-item ng-repeat="person in ctrl.books" ng-click="goToPerson(person.name, $event)" class="noright">
+    <md-list-item ng-repeat="person in ctrl.books | filter: q" ng-click="goToPerson(person.name, $event)" class="noright">
         <p>{{ person.title }}</p>
         <md-icon ng-click="ctrl.remove($index, ctrl.books)" aria-label="Send Email" class="md-secondary md-hue-3">remove_shopping_cart</md-icon>
     </md-list-item>

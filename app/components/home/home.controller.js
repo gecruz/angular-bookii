@@ -1,5 +1,5 @@
 import './home.view.html'
-import './quantity.dialog.html'
+import './showBook.dialog.html'
 
 class HomeController {
   constructor (BooksService, $mdToast, $mdDialog) {
@@ -7,7 +7,7 @@ class HomeController {
     this._$mdToast = $mdToast
     this._$mdDialog = $mdDialog
     // mock
-    this.shoppingCartBooks = [1, 2]
+    this.shoppingCartBooks = []
   }
 
   init () {
@@ -57,10 +57,10 @@ class HomeController {
       })
   }
 
-  openQuantityDialog (event, book) {
+  showBookDialog (event, book) {
     this.book = book
     this.alert = this._$mdDialog.show({
-      templateUrl: require('./quantity.dialog.html'),
+      templateUrl: require('./showBook.dialog.html'),
       clickOutsideToClose: true,
       controller: () => this,
       controllerAs: 'ctrl',
@@ -69,29 +69,21 @@ class HomeController {
     })
   }
 
-  closeQuantityDialog () {
+  closeBookDialog () {
     this.book = null
     this._$mdDialog.hide()
   }
 
-  addToCart (book, cart) {}
-
-  removeFromCart (book, cart) {}
-
-  remove (index, list) {
-    list.splice(index, 1)
-  }
-
   exists (item, list) {
-    return list.includes(parseInt(item))
+    return list.includes(item)
   }
 
   toggle (item, list) {
-    let idx = list.indexOf(parseInt(item))
+    let idx = list.indexOf(item)
     if (idx > -1) {
       list.splice(idx, 1)
     } else {
-      list.push(parseInt(item))
+      list.push(item)
     }
   }
 
