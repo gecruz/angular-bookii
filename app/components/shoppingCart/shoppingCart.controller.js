@@ -23,7 +23,7 @@ class ShoppingCartController {
     this._PromocodesService
       .getPromocode(code)
       .then(res => {
-        if (res) {
+        if (res.quantity > 0) {
           this.promocode = res
           this._$mdToast.show(this._$mdToast.simple().textContent('Promocode found! :)'))
         } else {

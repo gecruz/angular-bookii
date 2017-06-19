@@ -27,7 +27,7 @@ class PromocodesService {
         code: '22222',
         author: 'Frederick P. Brooks',
         percentage: 5,
-        quantity: 1
+        quantity: 0
       }, {
         id: 3,
         title: '33333',
