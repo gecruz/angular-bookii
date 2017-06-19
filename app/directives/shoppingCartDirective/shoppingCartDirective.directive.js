@@ -5,9 +5,6 @@ class ShoppingCartController {
     'ngInject'
     this._$scope = $scope
     this._$state = $state
-
-    console.log(this._$scope)
-
     this._$scope.options = {
       books: []
     }
@@ -22,7 +19,7 @@ class ShoppingCartController {
   }
 
   openCart () {
-    this._$state.go('app.shoppingCart')
+    this._$state.go('app.shoppingCart', { books: this.books })
   }
 
   setTitle () {

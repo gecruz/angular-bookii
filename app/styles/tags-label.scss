@@ -1,6 +1,8 @@
+@import 'colors';
+
 .tags-label {
     font-size: 16px;
-    color: rgb(68,138,255);
+    color: $accent;
     &.left {
         margin: 10px 0 0 10px;
         text-align: left;

@@ -19,7 +19,10 @@ class Router {
         .state('app.shoppingCart', {
           url: '/shoppingCart',
           templateUrl: 'components/shoppingCart/shoppingCart.view.html',
-          controller: 'ShoppingCartController as ctrl'
+          controller: 'ShoppingCartController as ctrl',
+          params: {
+            books: null
+          }
         })
     })
   }

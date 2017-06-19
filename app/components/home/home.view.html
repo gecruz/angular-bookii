@@ -39,9 +39,13 @@
                         <md-button ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite}" class="md-icon-button" aria-label="Favorite">
                             <md-icon>favorite</md-icon>
                         </md-button>
-                        <md-button ng-click="ctrl.toggle(item.id, ctrl.shoppingCartBooks)" ng-class="{'md-warn': ctrl.exists(item.id, ctrl.shoppingCartBooks) }"
+                        <md-button ng-show="ctrl.exists(item.id, ctrl.shoppingCartBooks)" ng-click="ctrl.openQuantityDialog($event, item)"
+                            class="md-icon-button md-warn" aria-label="Shopping cart">
+                            <md-icon>remove_shopping_cart</md-icon>
+                        </md-button>
+                        <md-button ng-show="!ctrl.exists(item.id, ctrl.shoppingCartBooks)" ng-click="ctrl.openQuantityDialog($event, item)"
                             class="md-icon-button" aria-label="Shopping cart">
-                            <md-icon>shopping_cart</md-icon>
+                            <md-icon>add_shopping_cart</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Share">
                             <md-icon>share</md-icon>

@@ -7,3 +7,5 @@ import 'angular-animate'
 import 'angular-aria'
 import 'angular-material'
 import 'angular-material/angular-material.css'
+import 'angular-messages'
+

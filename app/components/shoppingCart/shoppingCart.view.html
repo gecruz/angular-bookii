@@ -2,7 +2,7 @@
 
     <md-list-item ng-repeat="person in ctrl.books" ng-click="goToPerson(person.name, $event)" class="noright">
         <p>{{ person.title }}</p>
-        <md-icon ng-click="ctrl.remove($index, ctrl.books)" aria-label="Send Email" class="md-secondary md-hue-3">close</md-icon>
+        <md-icon ng-click="ctrl.remove($index, ctrl.books)" aria-label="Send Email" class="md-secondary md-hue-3">remove_shopping_cart</md-icon>
     </md-list-item>
 
 </md-content>

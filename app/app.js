@@ -7,6 +7,9 @@ import { ShoppingCartDirective } from './directives/shoppingCartDirective/shoppi
 
 const app = angular.module('App', [
   'ui.router',
+  'ngAnimate',
+  'ngAria',
+  'ngMessages',
   'ngMaterial'
 ])
 

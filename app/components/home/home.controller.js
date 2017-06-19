@@ -1,10 +1,11 @@
 import './home.view.html'
-import '../../images/logo.png'
+import './quantity.dialog.html'
 
 class HomeController {
-  constructor (BooksService, $mdToast) {
+  constructor (BooksService, $mdToast, $mdDialog) {
     this._BooksService = BooksService
     this._$mdToast = $mdToast
+    this._$mdDialog = $mdDialog
     // mock
     this.shoppingCartBooks = [1, 2]
   }
@@ -56,6 +57,27 @@ class HomeController {
       })
   }
 
+  openQuantityDialog (event, book) {
+    this.book = book
+    this.alert = this._$mdDialog.show({
+      templateUrl: require('./quantity.dialog.html'),
+      clickOutsideToClose: true,
+      controller: () => this,
+      controllerAs: 'ctrl',
+      fullscreen: true,
+      targetEvent: event
+    })
+  }
+
+  closeQuantityDialog () {
+    this.book = null
+    this._$mdDialog.hide()
+  }
+
+  addToCart (book, cart) {}
+
+  removeFromCart (book, cart) {}
+
   remove (index, list) {
     list.splice(index, 1)
   }
@@ -75,5 +97,5 @@ class HomeController {
 
 }
 
-HomeController.$inject = ['BooksService', '$mdToast']
+HomeController.$inject = ['BooksService', '$mdToast', '$mdDialog']
 export { HomeController }

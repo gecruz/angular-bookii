@@ -1,46 +1,29 @@
 import './shoppingCart.view.html'
 
 class ShoppingCartController {
-  constructor (BooksService, $mdToast) {
+  constructor (BooksService, $mdToast, $state) {
     this._BooksService = BooksService
     this._$mdToast = $mdToast
-
-    this.shoppingCartBooks = []
+    this._$state = $state
+    this.books = []
   }
 
   init () {
-    this.getAllBooks()
+    this.filterAllBooksByShoppingCart(this._$state.params.books)
   }
 
   remove (index, list) {
     list.splice(index, 1)
   }
 
-  getShoppingCartBooks () {}
-
-  getAllBooks () {
+  filterAllBooksByShoppingCart (books) {
     this._BooksService
       .getAllBooks()
       .then(res => {
         if (res.data) {
-          this.books = res.data
-          console.log(this.books)
-        } else {
-          this._$mdToast.show(this._$mdToast.simple().textContent('Something went wrong'))
-        }
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }
-
-  getBookById (id) {
-    this._BooksService
-      .getBookById(id)
-      .then(res => {
-        if (res.data) {
-          this.book = res.data
-          console.log(this.book)
+          books.map(book => {
+            this.books.push(res.data.filter(data => data.id === book)[0])
+          })
         } else {
           this._$mdToast.show(this._$mdToast.simple().textContent('Something went wrong'))
         }
@@ -52,5 +35,5 @@ class ShoppingCartController {
 
 }
 
-ShoppingCartController.$inject = ['BooksService', '$mdToast']
+ShoppingCartController.$inject = ['BooksService', '$mdToast', '$state']
 export { ShoppingCartController }

@@ -1,0 +1,54 @@
+<md-dialog aria-label="Book quantity" flex-lg="50">
+    <form name="Form" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ctrl.book.title}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="ctrl.closeQuantityDialog()">
+                    <md-icon aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+                <div layout="row" layout-align="space-between center">
+                    <span flex=""></span>
+                    <span class="tags-label right">{{ ctrl.book.price * ctrl.book.cartQuantity | currency: "R$: " : fractionSize }}</span>
+                </div>
+                
+                <h2>{{ctrl.book.author}} - {{ctrl.book.title}}</h2>
+                <p> {{ctrl.bookPreview}} </p>
+
+                <md-button ng-href="http://en.wikipedia.org/wiki/{{ctrl.book.title}}" target="_blank" md-autofocus>
+                    More on Wikipedia
+                </md-button>
+
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row" layout-align="start center">
+            <span flex></span>
+            <md-input-container class="align-items md-block" flex="30">
+                <label>Quantity</label>
+                <input name="quantity" 
+                    type="number"
+                    ng-model="ctrl.book.cartQuantity"
+                    ng-init="ctrl.book.cartQuantity = 1"
+                    required
+                    step="1"
+                    min="1" max={{ctrl.book.quantity}}
+                    aria-label="Book quantity">
+                <div ng-messages="Form.quantity.$error">
+                    <div ng-message="required">Please, choose some book.</div>
+                    <div ng-message="min">Please, choose at least 1 book.</div>
+                    <div ng-message="max">Please, choose less books.</div>
+                </div>
+            </md-input-container>
+            <md-button ng-disabled="Form.$invalid" class="md-raised md-accent" ng-click="answer('useful')">
+                Save
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
