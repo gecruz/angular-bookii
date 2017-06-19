@@ -5,25 +5,40 @@
 
         <span class="tags-label right">{{ item.price * item.cartQuantity | currency: "R$: " : fractionSize }}</span>
 
-        <md-input-container md-no-float class="align-items" flex="10">
-                 <input name="quantity" 
-                     type="number"
-                     ng-model="item.cartQuantity"
-                     ng-init="item.cartQuantity = 1"
-                     required
-                     step="1"
-                     min="1" max={{item.quantity}}
-                     aria-label="Book quantity">
-                 <div ng-messages="Form.quantity.$error">
-                     <div ng-message="required">Please, choose some book.</div>
-                     <div ng-message="min">Please, choose at least 1 book.</div>
-                     <div ng-message="max">Please, choose less books.</div>
-                 </div>
-             </md-input-container>
+        <md-input-container md-no-float class="align-items md-block" flex="10">
+            <input ng-change="ctrl.updateTotal()" name="quantity" type="number" ng-model="item.cartQuantity" required step="1" min="1"
+                max={{item.quantity}} aria-label="Book quantity">
+            <div ng-messages="Form.quantity.$error">
+                <div ng-message="required">Please, choose some book.</div>
+                <div ng-message="min">Please, choose at least 1 book.</div>
+                <div ng-message="max">Please, choose less books.</div>
+            </div>
+        </md-input-container>
 
         <md-icon ng-click="ctrl.remove($index, ctrl.books)" aria-label="Send Email" class="md-secondary md-hue-3">remove_shopping_cart</md-icon>
     </md-list-item>
 
     <md-divider></md-divider>
+
+    <md-list-item ng-click="goToPerson(book.name, $event)" class="noright">
+        <p>Total:
+            <span class="tags-label left">{{ ctrl.total | currency: "R$: " : fractionSize }}</span>
+        </p>
+
+        <span flex=""></span>
+        <md-input-container md-no-float class="md-block" flex="50">
+            <input flex="50" name="quantity" type="text" ng-model="ctrl.code" aria-label="Promocode" placeholder="Promocode">
+            <md-button ng-click="ctrl.validatePromocode(ctrl.code)" aria-label="Promocode button" class="md-icon-button md-hue-3">
+                <md-tooltip>Validate promocode!</md-tooltip>
+                <md-icon class="md-hue-3">card_giftcard</md-icon>
+            </md-button>
+        </md-input-container>
+        <span flex=""></span>
+
+        <md-button aria-label="Confirm buy" class="md-secondary md-hue-3">
+            Confirm
+            <md-icon class="md-secondary md-hue-3">thumb_up</md-icon>
+        </md-button>
+    </md-list-item>
 
 </md-content>
