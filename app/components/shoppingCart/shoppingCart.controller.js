@@ -27,7 +27,7 @@ class ShoppingCartController {
       .then(res => {
         if (res.data) {
           books.map(book => {
-            this.books.push(res.data.filter(data => data.id === book)[0])
+            this.books.push(res.data.filter(data => data.id === book.id)[0])
           })
         } else {
           this._$mdToast.show(this._$mdToast.simple().textContent('Something went wrong'))

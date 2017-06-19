@@ -44,7 +44,7 @@
                         <md-button class="md-icon-button" aria-label="Share">
                             <md-icon>share</md-icon>
                         </md-button>
-                        <md-button ng-click="ctrl.showBookDialog($index, item)" class="md-icon-button" aria-label="Show book">
+                        <md-button ng-click="ctrl.showBookDialog($event, item)" class="md-icon-button" aria-label="Show book">
                             <md-icon>chrome_reader_mode</md-icon>
                         </md-button>
                         <md-button ng-show="ctrl.exists(item, ctrl.shoppingCartBooks)" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" class="md-icon-button md-warn"

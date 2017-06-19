@@ -1,8 +1,29 @@
 <md-content layout-wrap ng-init="ctrl.init()">
 
-    <md-list-item ng-repeat="person in ctrl.books | filter: q" ng-click="goToPerson(person.name, $event)" class="noright">
-        <p>{{ person.title }}</p>
+    <md-list-item ng-repeat="item in ctrl.books | filter: q" ng-click="goToPerson(book.name, $event)" class="noright">
+        <p>{{ item.title }}</p>
+
+        <span class="tags-label right">{{ item.price * item.cartQuantity | currency: "R$: " : fractionSize }}</span>
+
+        <md-input-container md-no-float class="align-items" flex="10">
+                 <input name="quantity" 
+                     type="number"
+                     ng-model="item.cartQuantity"
+                     ng-init="item.cartQuantity = 1"
+                     required
+                     step="1"
+                     min="1" max={{item.quantity}}
+                     aria-label="Book quantity">
+                 <div ng-messages="Form.quantity.$error">
+                     <div ng-message="required">Please, choose some book.</div>
+                     <div ng-message="min">Please, choose at least 1 book.</div>
+                     <div ng-message="max">Please, choose less books.</div>
+                 </div>
+             </md-input-container>
+
         <md-icon ng-click="ctrl.remove($index, ctrl.books)" aria-label="Send Email" class="md-secondary md-hue-3">remove_shopping_cart</md-icon>
     </md-list-item>
+
+    <md-divider></md-divider>
 
 </md-content>
