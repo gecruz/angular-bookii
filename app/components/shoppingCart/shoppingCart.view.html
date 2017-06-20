@@ -1,43 +1,48 @@
 <md-content layout-wrap ng-init="ctrl.init()">
+    <form name="Form">
 
-    <md-list-item ng-repeat="item in ctrl.books | filter: q" ng-click="goToPerson(book.name, $event)" class="noright">
-        <p>{{ item.title }}</p>
+        <md-list-item ng-repeat="item in ctrl.books | filter: q" ng-click="goToPerson(book.name, $event)" class="md-2-line">
 
-        <span class="tags-label right">{{ item.price * item.cartQuantity | currency: "R$: " : fractionSize }}</span>
-
-        <md-input-container md-no-float class="align-items md-block" flex="10">
-            <input ng-change="ctrl.updateTotal()" name="quantity" type="number" ng-model="item.cartQuantity" required step="1" min="1"
-                max={{item.quantity}} aria-label="Book quantity">
-            <div ng-messages="Form.quantity.$error">
-                <div ng-message="required">Please, choose some book.</div>
-                <div ng-message="min">Please, choose at least 1 book.</div>
-                <div ng-message="max">Please, choose less books.</div>
+            <div class="md-list-item-text">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.author }}</p>
             </div>
-        </md-input-container>
 
-        <md-icon ng-click="ctrl.remove($index, ctrl.books)" aria-label="Send Email" class="md-secondary md-hue-3">remove_shopping_cart</md-icon>
-    </md-list-item>
+            <span class="tags-label right">{{ item.price * item.cartQuantity | currency: "R$: " : fractionSize }}</span>
 
-    <md-divider></md-divider>
+            <md-input-container md-no-float class="align-items md-block" flex="10">
+                <input ng-change="ctrl.updateTotal()" name="quantity{{$index}}" type="number" ng-model="item.cartQuantity" step="1" min="0"
+                    max={{item.quantity}} aria-label="Book quantity">
+                <div ng-messages="Form['quantity' + $index].$error">
+                    <div ng-message="min">Please, choose a valid quantity.</div>
+                    <div ng-message="max">Sorry, we just have {{item.quantity}} books.</div>
+                </div>
+            </md-input-container>
 
-    <md-list-item ng-click="goToPerson(book.name, $event)" class="noright">
-        <p>Total:
-            <span class="tags-label left">{{ ctrl.total | currency: "R$: " : fractionSize }}</span>
-        </p>
+            <md-icon ng-click="ctrl.remove($index, ctrl.books)" aria-label="Send Email" class="md-secondary md-hue-3">remove_shopping_cart</md-icon>
+        </md-list-item>
 
-        <span flex=""></span>
-        <md-input-container md-no-float class="md-block" flex="50">
-            <input flex="50" name="quantity" type="text" ng-model="ctrl.code" aria-label="Promocode" placeholder="Promocode">
-            <md-button ng-click="ctrl.validatePromocode(ctrl.code)" aria-label="Promocode button" class="md-icon-button md-hue-3">
-                <md-tooltip>Validate promocode!</md-tooltip>
-                <md-icon class="md-hue-3">card_giftcard</md-icon>
+        <md-divider></md-divider>
+
+        <md-list-item ng-click="goToPerson(book.name, $event)" class="noright">
+            <p>Total:
+                <span class="tags-label left">{{ ctrl.total | currency: "R$: " : fractionSize }}</span>
+            </p>
+
+            <span flex=""></span>
+            <md-input-container md-no-float class="md-block" flex="50">
+                <input flex="50" name="quantity" type="text" ng-model="ctrl.code" aria-label="Promocode" placeholder="Promocode">
+                <md-button ng-click="ctrl.validatePromocode(ctrl.code)" aria-label="Promocode button" class="md-icon-button md-hue-3">
+                    <md-tooltip>Validate promocode!</md-tooltip>
+                    <md-icon class="md-hue-3">card_giftcard</md-icon>
+                </md-button>
+            </md-input-container>
+            <span flex=""></span>
+
+            <md-button aria-label="Confirm buy" class="md-secondary md-hue-3">
+                Confirm
             </md-button>
-        </md-input-container>
-        <span flex=""></span>
+        </md-list-item>
 
-        <md-button aria-label="Confirm buy" class="md-secondary md-hue-3">
-            Confirm
-        </md-button>
-    </md-list-item>
-
+    </form>
 </md-content>

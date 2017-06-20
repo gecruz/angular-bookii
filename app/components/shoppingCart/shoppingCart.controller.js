@@ -13,7 +13,7 @@ class ShoppingCartController {
       this.filterAllBooksByShoppingCart(this._$state.params.books)
     } else {
       this._$state.go('app.home')
-      this._$mdToast.show(this._$mdToast.simple().textContent("You don't have any item at your cart :("))
+      this._$mdToast.show(this._$mdToast.simple().textContent("You don't have any book at your cart :("))
     }
   }
   remove (index, list) {
