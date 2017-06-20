@@ -62,7 +62,7 @@ class ShoppingCartController {
   }
   updateTotal () {
     if (this.books) {
-      this.total = this.books.reduce((total, book) => total + (book.price * book.cartQuantity), 0)
+      this.total = this.books.reduce((total, book) => total + (book.price * book.cartQuantity || 0), 0)
 
       if (this.promocode) {
         let promotionalBooks = this.books.filter(book => book.author === this.promocode.author)
