@@ -1,15 +1,15 @@
-import './toolbar.view.html'
+import './toolbar.template.html'
 
-class ToolbarController {
-  constructor ($mdToast) {
+export class ToolbarController {
+  constructor ($state, $mdToast) {
+    'ngInject'
+
+    this._$state = $state
     this._$mdToast = $mdToast
   }
 
   logout () {
-    // future logout goes here
+    this._$state.go('signin')
   }
 
 }
-
-ToolbarController.$inject = ['$mdToast']
-export { ToolbarController }

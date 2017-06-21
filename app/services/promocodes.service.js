@@ -1,12 +1,16 @@
-class PromocodesService {
+export class PromocodesService {
   constructor ($http, $q, API) {
+    'ngInject'
+
     this._$http = $http
     this._$q = $q
     this.API = API
   }
+
   // getPromocode (code) {
   //   return this._$http.get(`${this.API}/promocodes/${code}`)
   // }
+
   getPromocode (code) {
     return this._$q.when(
       this.getAllPromocodes().then(promocodes => {
@@ -14,6 +18,7 @@ class PromocodesService {
       })
     )
   }
+
   getAllPromocodes () {
     return this._$q.resolve({
       data: [{
@@ -37,7 +42,5 @@ class PromocodesService {
       }]
     })
   }
-}
 
-PromocodesService.$inject = ['$http', '$q', 'API']
-export { PromocodesService }
+}

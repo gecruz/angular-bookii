@@ -1,5 +1,7 @@
-class BooksService {
+export class BooksService {
   constructor ($http, $q, API) {
+    'ngInject'
+
     this._$http = $http
     this._$q = $q
     this.API = API
@@ -104,7 +106,5 @@ class BooksService {
       }]
     })
   }
-}
 
-BooksService.$inject = ['$http', '$q', 'API']
-export { BooksService }
+}

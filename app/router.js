@@ -1,15 +1,23 @@
-class Router {
+export class Router {
   static configure (app) {
     app.config(($stateProvider, $urlRouterProvider) => {
+      'ngInject'
 
       $urlRouterProvider.otherwise('/home')
 
       $stateProvider
+
+        .state('signin', {
+          url: '/signin',
+          templateUrl: 'components/signin/signin.view.html',
+          controller: 'SigninController as ctrl'
+        })
+
         .state('app', {
           abstract: true,
           url: '',
-          templateUrl: 'shared/toolbar/toolbar.view.html'
-        // controller: 'ToolbarController as ctrl' *future logout logic goes here*
+          templateUrl: 'shared/toolbar/toolbar.template.html',
+          controller: 'ToolbarController as ctrl'
         })
         .state('app.home', {
           url: '/home',
@@ -27,4 +35,3 @@ class Router {
     })
   }
 }
-export { Router }

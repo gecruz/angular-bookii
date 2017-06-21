@@ -1,13 +1,16 @@
 import './shoppingCart.view.html'
 
-class ShoppingCartController {
+export class ShoppingCartController {
   constructor (BooksService, $mdToast, $state, PromocodesService) {
+    'ngInject'
+
     this._BooksService = BooksService
     this._PromocodesService = PromocodesService
     this._$mdToast = $mdToast
     this._$state = $state
     this.books = []
   }
+
   init () {
     if (this._$state.params.books) {
       this.filterAllBooksByShoppingCart(this._$state.params.books)
@@ -16,10 +19,12 @@ class ShoppingCartController {
       this._$mdToast.show(this._$mdToast.simple().textContent("You don't have any book at your cart :("))
     }
   }
+
   remove (index, list) {
     list.splice(index, 1)
     this.updateTotal()
   }
+
   validatePromocode (code) {
     this._PromocodesService
       .getPromocode(code)
@@ -40,6 +45,7 @@ class ShoppingCartController {
         console.error(err)
       })
   }
+
   filterAllBooksByShoppingCart (books) {
     this._BooksService
       .getAllBooks()
@@ -60,6 +66,7 @@ class ShoppingCartController {
         console.error(err)
       })
   }
+
   updateTotal () {
     if (this.books) {
       this.total = this.books.reduce((total, book) => total + (book.price * book.cartQuantity || 0), 0)
@@ -75,6 +82,3 @@ class ShoppingCartController {
   }
 
 }
-
-ShoppingCartController.$inject = ['BooksService', '$mdToast', '$state', 'PromocodesService']
-export { ShoppingCartController }

@@ -15,6 +15,8 @@ const app = angular.module('App', [
 ])
 
 app.config(($mdThemingProvider) => {
+  'ngInject'
+
   $mdThemingProvider.theme('default')
     .primaryPalette('blue-grey')
     .accentPalette('blue')

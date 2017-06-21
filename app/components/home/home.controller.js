@@ -1,12 +1,13 @@
 import './home.view.html'
 import './showBook.dialog.html'
 
-class HomeController {
+export class HomeController {
   constructor (BooksService, $mdToast, $mdDialog) {
+    'ngInject'
+
     this._BooksService = BooksService
     this._$mdToast = $mdToast
     this._$mdDialog = $mdDialog
-    // mock
     this.shoppingCartBooks = []
   }
 
@@ -88,6 +89,3 @@ class HomeController {
   }
 
 }
-
-HomeController.$inject = ['BooksService', '$mdToast', '$mdDialog']
-export { HomeController }
