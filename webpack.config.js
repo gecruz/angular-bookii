@@ -10,7 +10,7 @@ module.exports = {
   },
 
   output: {
-    filename: '[name].[chunkhash].bundle.js',
+    filename: '[name].[hash].bundle.js',
     path: path.join(__dirname, 'dist')
   },
   plugins: [
@@ -71,11 +71,15 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    port: 9000
+    port: 9000,
+    inline: true,
+    compress: true,
+    stats: { colors: true },
+    clientLogLevel: "info"
   },
   watchOptions: {
     aggregateTimeout: 300,
     ignored: path.resolve(__dirname, 'node_modules/')
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 }
