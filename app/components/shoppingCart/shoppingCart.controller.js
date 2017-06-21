@@ -15,7 +15,7 @@ export class ShoppingCartController {
     if (this._$state.params.books) {
       this.filterAllBooksByShoppingCart(this._$state.params.books)
     } else {
-      this._$state.go('app.home')
+      // this._$state.go('app.home')
       this._$mdToast.show(this._$mdToast.simple().textContent("You don't have any book at your cart :("))
     }
   }
