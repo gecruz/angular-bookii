@@ -1,67 +1,65 @@
 <shopping-cart books="ctrl.shoppingCartBooks"> </shopping-cart>
 
 <md-content>
+  <div ng-init="ctrl.init()">
 
-    <div ng-init="ctrl.init()">
+    <div layout-wrap flex-xs flex-gt-xs="100" layout="row" layout-align="center center">
 
-        <div layout-wrap flex-xs flex-gt-xs="100" layout="row" layout-align="center center">
+      <md-card flex-xs="90" flex-lg="25" ng-repeat="item in ctrl.books | filter: q">
 
-            <md-card flex-xs="90" flex-lg="25" ng-repeat="item in ctrl.books | filter: q">
-
-                <div layout="row" layout-align="space-between center">
-                    <span class="tags-label left">{{ item.quantity }} items </span>
-                    <span flex=""></span>
-                    <span class="tags-label right">{{ item.price | currency: "R$: " : fractionSize }}</span>
-                </div>
-
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">{{ item.title }}</span>
-                        <div class="md-subhead">
-                            <span>{{ item.author }}</span>
-                            <span flex=""></span>
-                        </div>
-                    </md-card-title-text>
-                </md-card-title>
-
-                <md-card-content layout="row" layout-align="space-between">
-
-                    <div class="md-media-lg card-media">
-                        <div ng-show="ctrl.bookPreview.length > 130 && !showMore">{{ ctrl.bookPreview|limitTo:130 }}...
-                            <md-button md-no-ink class="md-primary" ng-click="showMore = !showMore"><strong>Show more</strong></md-button>
-                        </div>
-                        <div ng-show="showMore">{{ ctrl.bookPreview }}
-                            <md-button class="md-primary" ng-click="showMore = !showMore"><strong>Show less</strong></md-button>
-                        </div>
-                    </div>
-
-                    <md-card-actions layout="column">
-                        <!--future favorites logic goes here-->
-                        <md-button ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite}" class="md-icon-button" aria-label="Favorite">
-                            <md-icon>favorite</md-icon>
-                        </md-button>
-                        <!--future share logic goes here-->
-                        <md-button class="md-icon-button" aria-label="Share">
-                            <md-icon>share</md-icon>
-                        </md-button>
-                        <md-button ng-click="ctrl.showBookDialog($event, item)" class="md-icon-button" aria-label="Show book">
-                            <md-icon>chrome_reader_mode</md-icon>
-                        </md-button>
-                        <md-button ng-show="ctrl.exists(item, ctrl.shoppingCartBooks)" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" class="md-icon-button md-warn"
-                            aria-label="Shopping cart">
-                            <md-icon>remove_shopping_cart</md-icon>
-                        </md-button>
-                        <md-button ng-show="!ctrl.exists(item, ctrl.shoppingCartBooks)" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" class="md-icon-button"
-                            aria-label="Shopping cart">
-                            <md-icon>add_shopping_cart</md-icon>
-                        </md-button>
-                    </md-card-actions>
-
-                </md-card-content>
-            </md-card>
-
+        <div layout="row" layout-align="space-between center">
+          <span class="tags-label left">{{ ::item.quantity }} items </span>
+          <span flex=""></span>
+          <span class="tags-label right">{{ ::item.price | currency: "R$: " : fractionSize }}</span>
         </div>
+
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{ ::item.title }}</span>
+            <div class="md-subhead">
+              <span>{{ ::item.author }}</span>
+              <span flex=""></span>
+            </div>
+          </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content layout="row" layout-align="space-between">
+
+          <div class="md-media-lg card-media">
+            <div ng-show="ctrl.bookPreview.length > 130 && !showMore">{{ ::ctrl.bookPreview|limitTo:130 }}...
+              <md-button md-no-ink class="md-primary" ng-click="showMore = !showMore"><strong>Show more</strong></md-button>
+            </div>
+            <div ng-show="showMore">{{ ::ctrl.bookPreview }}
+              <md-button class="md-primary" ng-click="showMore = !showMore"><strong>Show less</strong></md-button>
+            </div>
+          </div>
+
+          <md-card-actions layout="column">
+            <!--future favorites logic goes here-->
+            <md-button ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite}" class="md-icon-button" aria-label="Favorite">
+              <md-icon>favorite</md-icon>
+            </md-button>
+            <!--future share logic goes here-->
+            <md-button class="md-icon-button" aria-label="Share">
+              <md-icon>share</md-icon>
+            </md-button>
+            <md-button ng-click="ctrl.showBookDialog($event, item)" class="md-icon-button" aria-label="Show book">
+              <md-icon>chrome_reader_mode</md-icon>
+            </md-button>
+            <md-button ng-show="ctrl.exists(item, ctrl.shoppingCartBooks)" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" class="md-icon-button md-warn"
+              aria-label="Shopping cart">
+              <md-icon>remove_shopping_cart</md-icon>
+            </md-button>
+            <md-button ng-show="!ctrl.exists(item, ctrl.shoppingCartBooks)" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" class="md-icon-button"
+              aria-label="Shopping cart">
+              <md-icon>add_shopping_cart</md-icon>
+            </md-button>
+          </md-card-actions>
+
+        </md-card-content>
+      </md-card>
 
     </div>
 
+  </div>
 </md-content>
