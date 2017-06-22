@@ -1,4 +1,4 @@
-export class PromocodesService {
+export default class PromocodesService {
   constructor ($http, $q, API) {
     'ngInject'
 

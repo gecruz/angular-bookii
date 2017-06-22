@@ -1,6 +1,6 @@
 import './shoppingCart.view.html'
 
-export class ShoppingCartController {
+export default class ShoppingCartController {
   constructor (BooksService, $mdToast, $state, PromocodesService) {
     'ngInject'
 

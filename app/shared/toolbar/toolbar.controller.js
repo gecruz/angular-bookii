@@ -1,6 +1,6 @@
 import './toolbar.template.html'
 
-export class ToolbarController {
+export default class ToolbarController {
   constructor ($state, $mdToast) {
     'ngInject'
 

@@ -1,13 +1,14 @@
 import './home.view.html'
 import './showBook.dialog.html'
 
-export class HomeController {
+export default class HomeController {
   constructor (BooksService, $mdToast, $mdDialog) {
     'ngInject'
 
     this._BooksService = BooksService
     this._$mdToast = $mdToast
     this._$mdDialog = $mdDialog
+
     this.shoppingCartBooks = []
   }
 

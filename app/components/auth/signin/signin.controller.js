@@ -1,6 +1,6 @@
 import './signin.view.html'
 
-export class SigninController {
+export default class SigninController {
   constructor ($state, $mdToast) {
     'ngInject'
 

@@ -1,6 +1,6 @@
 import './signup.view.html'
 
-export class SignupController {
+export default class SignupController {
   constructor ($state, $mdToast) {
     'ngInject'
 

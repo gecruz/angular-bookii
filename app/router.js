@@ -1,4 +1,4 @@
-export class Router {
+export default class Router {
   static configure (app) {
     app.config(($stateProvider, $urlRouterProvider) => {
       'ngInject'

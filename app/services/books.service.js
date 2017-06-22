@@ -1,4 +1,4 @@
-export class BooksService {
+export default class BooksService {
   constructor ($http, $q, API) {
     'ngInject'
 
@@ -46,7 +46,7 @@ export class BooksService {
       }, {
         id: 3,
         title: 'Expressões Regulares - Uma Abordagem Divertida',
-        author: 'Aurelio Marinho Jargas	',
+        author: 'Aurelio Marinho Jargas',
         price: 20.00,
         quantity: 13
       }, {
