@@ -32,7 +32,7 @@ module.exports = {
       include: path.resolve(__dirname, 'app/'),
       loader: `ngtemplate-loader?relativeTo=${__dirname}/app/!html-loader`
     }, {
-      test: /\index.html$/,
+      test: /\.index.html$/,
       exclude: path.resolve(__dirname, 'node_modules/'),
       use: 'html-loader?name=[name].[ext]'
     }, {
@@ -68,7 +68,7 @@ module.exports = {
     inline: true,
     compress: true,
     stats: { colors: true },
-    clientLogLevel: 'error'
+    clientLogLevel: 'info'
   },
   watchOptions: {
     aggregateTimeout: 300,

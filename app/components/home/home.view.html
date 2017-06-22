@@ -38,7 +38,7 @@
             <md-icon>favorite</md-icon>
           </md-button>
           <!--future share logic goes here-->
-          <md-button class="md-icon-button" aria-label="Share">
+          <md-button class="md-icon-button" aria-label="Share" ng-click="ctrl.showBottomSheet($index)">
             <md-icon>share</md-icon>
           </md-button>
           <md-button ng-click="ctrl.showBookDialog($event, item)" class="md-icon-button" aria-label="Show book">

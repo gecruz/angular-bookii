@@ -36,7 +36,7 @@ export default class PromocodesService {
       }, {
         id: 3,
         code: '33333',
-        author: 'Aurelio Marinho Jargas	',
+        author: 'Aurelio Marinho Jargas',
         percentage: 20,
         quantity: 13
       }]

@@ -1,15 +1,34 @@
 import './home.view.html'
 import './showBook.dialog.html'
+import '../../shared/bottom-sheet/bottom-sheet.template.html'
 
 export default class HomeController {
-  constructor (BooksService, $mdToast, $mdDialog) {
+  constructor (BooksService, $mdToast, $mdDialog, $mdBottomSheet) {
     'ngInject'
 
     this._BooksService = BooksService
     this._$mdToast = $mdToast
     this._$mdDialog = $mdDialog
+    this._$mdBottomSheet = $mdBottomSheet
 
     this.shoppingCartBooks = []
+  }
+
+  showBottomSheet () {
+    this._$mdBottomSheet.show({
+      templateUrl: require('../../shared/bottom-sheet/bottom-sheet.template.html'),
+      controller: 'BottomSheetController as ctrl',
+      clickOutsideToClose: true
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  listItemClick (index) {
+    var clickedItem = this.items[index]
+    this._$mdBottomSheet.hide(clickedItem)
   }
 
   init () {
