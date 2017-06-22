@@ -1,4 +1,4 @@
-<md-button class="md-fab md-fab-bottom-right" ng-click="ctrl.openCart($event)" aria-label="Shopping cart">
+<md-button class="md-fab md-fab-bottom-right" ui-sref="app.shoppingCart({ books: books })" aria-label="Shopping cart">
   <md-icon>shopping_cart</md-icon>
-  <span class="notifications-label"> {{ ctrl.books.length }} </span>
+  <span class="notifications-label"> {{ books.length }} </span>
 </md-button>
