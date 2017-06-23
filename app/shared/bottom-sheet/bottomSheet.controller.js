@@ -7,9 +7,9 @@ export default class BottomSheetController {
     this._$mdBottomSheet = $mdBottomSheet
 
     this.items = [
-      { name: 'Hangout', icon: 'hangout', color: 'md-primary' },
+      { name: 'Person', icon: 'person', color: 'md-accent' },
       { name: 'Mail', icon: 'mail', color: 'md-accent' },
-      { name: 'Message', icon: 'message', color: 'md-primary' }
+      { name: 'Message', icon: 'message', color: 'md-accent' }
     ]
   }
 
