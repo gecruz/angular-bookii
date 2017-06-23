@@ -9,7 +9,7 @@ export default class Router {
 
         .state('signin', {
           url: '/signin',
-          templateUrl: 'components/signin/signin.view.html',
+          templateUrl: 'components/auth/signin/signin.view.html',
           controller: 'SigninController as ctrl'
         })
 

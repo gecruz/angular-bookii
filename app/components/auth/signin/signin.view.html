@@ -1,0 +1,34 @@
+<div layout="column" layout-align="center center" layout-fill="layout-fill">
+    <div class="signinBox md-whiteframe-z3" layout="column">
+        <md-toolbar>
+            <h2 class="md-toolbar-tools"><span>Signin</span></h2>
+        </md-toolbar>
+        <form name="Form">
+            <md-content class="md-padding" layout="column">
+                <md-input-container>
+                    <md-icon>person_outline</md-icon>
+                    <label>Email</label>
+                    <input name="email" type="email" ng-model="ctrl.user.email" required md-no-asterisk/>
+                    <div ng-messages="Form.email.$error">
+                        <div ng-message="required">This is required!</div>
+                        <div ng-message="email">This email is invalid!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <md-icon>lock_outline</md-icon>
+                    <label>Password</label>
+                    <input name="password" type="password" ng-model="ctrl.user.password" required md-no-asterisk/>
+                    <div ng-messages="Form.password.$error">
+                        <div ng-message="required">This is required!</div>
+                    </div>
+                </md-input-container>
+                <md-card-actions layout-xs="column" layout="row" layout-align="start center">
+                    <md-button ng-click="ctrl.signin(ctrl.user)" class="md-raised md-accent">Signin</md-button>
+                    <md-button ui-sref="signup" class="md-primary">Signup</md-button>
+                    <span flex=""></span>
+                    <md-button class="md-primary">Forgot password</md-button>
+                </md-card-actions>
+            </md-content>
+        </form>
+    </div>
+</div>
