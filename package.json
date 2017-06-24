@@ -33,7 +33,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.13.2",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "angular": "^1.6.3",
