@@ -24,7 +24,7 @@
       <md-card-content layout="row" layout-align="space-between">
 
         <div class="md-media-lg card-media">
-          <div ng-show="ctrl.bookPreview.length > 130 && !showMore">{{ ::ctrl.bookPreview|limitTo:130 }}...
+          <div ng-show="ctrl.bookPreview.length > 140 && !showMore">{{ ::ctrl.bookPreview|limitTo:140 }}...
             <md-button md-no-ink class="md-primary" ng-click="showMore = !showMore"><strong>Show more</strong></md-button>
           </div>
           <div ng-show="showMore">{{ ::ctrl.bookPreview }}
@@ -32,29 +32,31 @@
           </div>
         </div>
 
-        <md-card-actions layout="column">
-          <!--future favorites logic goes here-->
-          <md-button ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite}" class="md-icon-button" aria-label="Favorite">
-            <md-icon>favorite</md-icon>
-          </md-button>
-          <!--future share logic goes here-->
-          <md-button class="md-icon-button" aria-label="Share" ng-click="ctrl.showBottomSheet($index)">
-            <md-icon>share</md-icon>
-          </md-button>
-          <md-button ng-click="ctrl.showBookDialog($event, item)" class="md-icon-button" aria-label="Show book">
-            <md-icon>chrome_reader_mode</md-icon>
-          </md-button>
-          <md-button ng-show="ctrl.exists(item, ctrl.shoppingCartBooks)" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" class="md-icon-button md-warn"
-            aria-label="Shopping cart">
-            <md-icon>remove_shopping_cart</md-icon>
-          </md-button>
-          <md-button ng-show="!ctrl.exists(item, ctrl.shoppingCartBooks)" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" class="md-icon-button"
-            aria-label="Shopping cart">
-            <md-icon>add_shopping_cart</md-icon>
-          </md-button>
-        </md-card-actions>
 
       </md-card-content>
+      <!--Maybe a future angular directive-->
+      <md-card-actions layout="row">
+        <md-button aria-label="Shopping cart" class="md-icon-button" ng-click="ctrl.toggle(item, ctrl.shoppingCartBooks)" ng-mouseenter="item.hover = true"
+          ng-mouseleave="item.hover = false">
+          <md-icon ng-class="{ 'md-accent': item.hover }" ng-if="!ctrl.exists(item, ctrl.shoppingCartBooks)">add_shopping_cart</md-icon>
+          <md-icon class="md-warn" ng-if="ctrl.exists(item, ctrl.shoppingCartBooks)">remove_shopping_cart</md-icon>
+        </md-button>
+        <!--future favorites logic goes here-->
+        <md-button aria-label="Favorite" class="md-icon-button" ng-click="item.favorite = !item.favorite" ng-class="{'md-warn': item.favorite, 'md-accent': item.favoriteHover }"
+          ng-mouseenter="item.favoriteHover = true" ng-mouseleave="item.favoriteHover = false">
+          <md-icon ng-class="{ 'md-accent': item.favoriteHover }">favorite</md-icon>
+        </md-button>
+        <md-button aria-label="Show book" class="md-icon-button" ng-click="ctrl.showBookDialog($event, item)" ng-mouseenter="item.showBookHover = true"
+          ng-mouseleave="item.showBookHover = false">
+          <md-icon ng-class="{ 'md-accent': item.showBookHover }">chrome_reader_mode</md-icon>
+        </md-button>
+        <!--future share logic goes here-->
+        <md-button aria-label="Share" class="md-icon-button" ng-click="ctrl.showBottomSheet($index)" ng-mouseenter="item.shareHover = true"
+          ng-mouseleave="item.shareHover = false">
+          <md-icon ng-class="{ 'md-accent': item.shareHover }">share</md-icon>
+        </md-button>
+      </md-card-actions>
+
     </md-card>
 
   </div>
