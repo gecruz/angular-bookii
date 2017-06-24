@@ -5,12 +5,38 @@
   </md-button>
   <h1>Bookii</h1>
   <span flex=""></span>
+
   <md-input-container md-no-float class="md-accent align-items">
     <input ng-show="search" name="search" type="search" ng-model="q" placeholder="search..." aria-label="Search item">
     <md-button ng-click="search = !search" class="md-icon-button">
       <md-icon>search</md-icon>
     </md-button>
   </md-input-container>
+
+  <md-menu>
+    <md-button aria-label="Open user menu" class="md-icon-button" ng-mouseenter="$mdMenu.open()">
+      <md-icon md-menu-origin>person</md-icon>
+    </md-button>
+    <md-menu-content width="3" ng-mouseleave="$mdMenu.close()">
+      <md-menu-item>
+        <md-button>
+          <div layout="row" flex>
+            <p flex>Profile</p>
+            <md-icon md-menu-align-target>person</md-icon>
+          </div>
+        </md-button>
+      </md-menu-item>
+      <md-menu-divider></md-menu-divider>
+      <md-menu-item>
+        <md-button ui-sref="signin">
+          <div layout="row" flex>
+            <p flex>Logout</p>
+            <md-icon md-menu-align-target>exit_to_app</md-icon>
+          </div>
+        </md-button>
+      </md-menu-item>
+  </md-menu>
+
 </md-toolbar>
 
 <ui-view></ui-view>
