@@ -1,6 +1,6 @@
 // angular app
 import 'angular'
-import 'angular-ui-router'
+import '@uirouter/angularjs'
 import './styles/main.scss'
 // angular material
 import 'angular-animate'
