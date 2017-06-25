@@ -1,0 +1,53 @@
+<div layout="column" layout-align="center center" layout-fill="layout-fill">
+    <div class="signinBox md-whiteframe-z3" layout="column">
+        <md-toolbar layout="row" class="md-toolbar-tools">
+            <md-button ui-sref="signin" class="md-icon-button">
+                <md-icon>arrow_back</md-icon>
+            </md-button>
+            <h2 class="md-toolbar-tools"><span>Signup</span></h2>
+        </md-toolbar>
+        <form name="Form">
+            <md-content class="md-padding" layout="column">
+                <md-input-container>
+                    <label>Name</label>
+                    <input name="name" type="text" ng-model="ctrl.user.name" required md-no-asterisk/>
+                    <div ng-messages="Form.email.$error">
+                        <div ng-message="required">This is required!</div>
+                    </div>
+                </md-input-container>
+                <!--need to be fixed-->
+                <md-input-container>
+                    <label>Date of birthday</label>
+                    <md-datepicker ng-model="ctrl.user.birthday" name="birthday" md-min-date="ctrl.minDate" md-max-date="ctrl.maxDate" md-open-on-focus
+                        md-hide-icons="triangle"></md-datepicker>
+                    <div ng-messages="Form.birthday.$error">
+                        <div ng-message="valid">The entered value is not a date!</div>
+                        <div ng-message="required">This date is required!</div>
+                        <div ng-message="mindate">Date is too early!</div>
+                        <div ng-message="maxdate">Date is too late!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <md-icon>person_outline</md-icon>
+                    <label>Email</label>
+                    <input name="email" type="email" ng-model="ctrl.user.email" required md-no-asterisk/>
+                    <div ng-messages="Form.email.$error">
+                        <div ng-message="required">This is required!</div>
+                        <div ng-message="email">This email is invalid!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <md-icon>lock_outline</md-icon>
+                    <label>Password</label>
+                    <input name="password" type="password" ng-model="ctrl.user.password" required md-no-asterisk/>
+                    <div ng-messages="Form.password.$error">
+                        <div ng-message="required">This is required!</div>
+                    </div>
+                </md-input-container>
+                <md-card-actions layout-xs="column" layout="row" layout-align="end center">
+                    <md-button ng-click="ctrl.signup(ctrl.user)" class="md-raised md-accent">Confirm</md-button>
+                </md-card-actions>
+            </md-content>
+        </form>
+    </div>
+</div>
