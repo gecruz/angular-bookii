@@ -12,7 +12,7 @@ export default class Router {
           templateUrl: 'components/auth/signin/signin.view.html',
           controller: 'SigninController as ctrl'
         })
-        
+
         .state('signup', {
           url: '/signup',
           templateUrl: 'components/auth/signup/signup.view.html',

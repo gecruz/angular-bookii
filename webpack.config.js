@@ -18,7 +18,8 @@ module.exports = {
       names: ['vendor']
     }),
     new HtmlWebPackPlugin({
-      template: 'index.html'
+      template: 'index.html',
+      favicon: './app/images/favicon.ico'
     }),
     new ExtractTextPlugin({
       filename: 'bundle.css',
@@ -54,7 +55,7 @@ module.exports = {
         publicPath: '/dist'
       })
     }, {
-      test: /\.(png|jpeg|jpg|gif)$/,
+      test: /\.(png|jpeg|jpg|gif|ico)$/,
       include: path.join(__dirname, 'app/images/'),
       use: 'file-loader?name=images/[name].[ext]&context=app/images/'
     }, {
